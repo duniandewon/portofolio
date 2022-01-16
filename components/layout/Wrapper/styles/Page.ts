@@ -9,6 +9,7 @@ const Page = styled.div<Props>`
   width: 50%;
   position: relative;
   padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 
   &::after {
     content: "";
