@@ -10,6 +10,7 @@ const Page = styled.div<Props>`
   position: relative;
   padding-top: 5.5rem;
   padding-bottom: 5.5rem;
+  overflow: auto;
 
   &::after {
     content: "";
