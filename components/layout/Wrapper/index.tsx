@@ -1,4 +1,5 @@
 import Aside from "../Aside";
+import Navigation from "../Navigation";
 
 import { Container, Main } from "./styles";
 
@@ -10,7 +11,10 @@ const Wrapper = ({ children }: Props) => {
   return (
     <Container>
       <Aside />
-      <Main>{children}</Main>
+      <Main>
+        <Navigation />
+        {children}
+      </Main>
     </Container>
   );
 };
