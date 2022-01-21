@@ -1,8 +1,12 @@
 import Link from "next/link";
+import {useRouter} from 'next/router';
 
 import { Container, NavItem } from "./styles";
 
+
 const Navigation = () => {
+  const router = useRouter();
+
   const navs = [
     {
       href: "/",
@@ -22,7 +26,7 @@ const Navigation = () => {
     <Container>
       {navs.map((nav) => (
         <Link href={nav.href} key={nav.label}>
-          <NavItem>{nav.label}</NavItem>
+          <NavItem active={nav.href === router.pathname}>{nav.label}</NavItem>
         </Link>
       ))}
     </Container>
