@@ -1,6 +1,6 @@
-import React from "react";
-import Navbar from "../../elements/Navbar";
-import { Book, Container } from "./styles";
+import Aside from "../Aside";
+
+import { Container, Main } from "./styles";
 
 interface Props {
   children: React.ReactNode;
@@ -9,8 +9,8 @@ interface Props {
 const Wrapper = ({ children }: Props) => {
   return (
     <Container>
-      <Navbar />
-      <Book>{children}</Book>
+      <Aside />
+      <Main>{children}</Main>
     </Container>
   );
 };

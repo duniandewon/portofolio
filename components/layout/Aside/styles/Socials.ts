@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-const Infos = styled.div`
+const Socials = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   gap: 2rem;
-  padding: 0 5rem;
-  margin-top: 5rem;
-  flex-wrap: wrap;
 `;
 
-export default Infos;
+export default Socials;
+

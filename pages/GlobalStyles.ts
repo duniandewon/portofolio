@@ -15,15 +15,12 @@ html {
 body {
   width: 100%;
   height: 100vh;
-  background: #064663;
+  background: #fff;
   font-family: 'Quicksand', sans-serif;
   font-size: 1.6rem;
   line-height: 1.7;
   text-align: justify;
   color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 h1,
@@ -38,13 +35,12 @@ h6 {
 }
 
 a {
-  color: #fff;
+  color: #333;
   text-decoration: none;
   cursor: pointer;
 
   &:hover {
     color: #777;
-    text-decoration: underline;
   }
 }
 
