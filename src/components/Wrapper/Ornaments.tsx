@@ -2,8 +2,8 @@ import { Fragment } from "react";
 
 import Box from "@mui/material/Box";
 
-import OrnamentLeft from "../../assets/OrnamentLeft";
-import OrnamentTop from "../../assets/OrnamentTop";
+import OrnamentLeft from "./OrnamentLeft";
+import OrnamentTop from "./OrnamentTop";
 
 const Ornaments = () => {
   return (
