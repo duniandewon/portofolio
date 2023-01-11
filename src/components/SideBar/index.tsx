@@ -25,23 +25,29 @@ const SideBar = () => {
         display: "flex",
         gap: {
           lg: 10,
-          xl: 20
+          xl: 20,
         },
         position: "absolute",
         transform: "rotate(-90deg) translateY(-50%)",
-        top: "50%",
+        top: "46%",
         left: {
-          lg: -210,
-          xl: -290
+          lg: -265,
+          xl: -360,
         },
+        width: "90vh",
       }}
     >
       {personalInfo.map((pi) => (
-        <Box>
-          <Typography variant="h4" component="h5">
+        <Box key={pi.title}>
+          <Typography
+            variant="h4"
+            component="h5"
+            fontWeight={900}
+            fontSize={{ lg: 18, xl: 20 }}
+          >
             {pi.title}
           </Typography>
-          <Typography variant="body1" component="h5">
+          <Typography variant="body1" component="h5" fontSize={{ lg: 15, xl: 17 }}>
             {pi.text}
           </Typography>
         </Box>
