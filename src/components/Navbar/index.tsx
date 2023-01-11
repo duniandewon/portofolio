@@ -3,21 +3,22 @@ import Box from "@mui/material/Box";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import { Link } from "@mui/material";
 
 const Navbar = () => {
   const socialLinks = [
     {
-      link: "githutb",
+      link: "https://www.github.com/duniandewon",
       icon: <GitHubIcon />,
     },
     {
-      link: "linkedin",
+      link: "https://www.linkedin.com/in/duniandeown",
       icon: <LinkedInIcon />,
     },
     {
-      link: "twwitter",
+      link: "https://www.twitter.com/duniandewon",
       icon: <TwitterIcon />,
-    }
+    },
   ];
 
   const SocialLinks = () => {
@@ -36,7 +37,7 @@ const Navbar = () => {
       >
         {socialLinks.map((sl) => (
           <Box key={sl.link} component="li">
-            {sl.icon}
+            <Link href={sl.link} target="_blank" color="#000">{sl.icon}</Link>
           </Box>
         ))}
       </Box>
