@@ -4,12 +4,21 @@ import Paper from "@mui/material/Paper";
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
 
-interface Props {
-  name: string;
-  image?: string;
+export interface IProject {
+  id: string;
+  title: string;
+  description: string;
+  techs: string[];
+  image: string;
+  srcCode?: string;
+  live?: string;
 }
 
-const ProjectItem = ({ name, image }: Props) => {
+interface Props {
+  project: IProject;
+}
+
+const ProjectItem = ({ project: { title, image } }: Props) => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const handlePopoverOpen = (event: MouseEvent<HTMLElement>) =>
@@ -27,13 +36,11 @@ const ProjectItem = ({ name, image }: Props) => {
         aria-haspopup="true"
         onMouseEnter={handlePopoverOpen}
         onMouseLeave={handlePopoverClose}
-        onClick={() => alert(name)}
         sx={{
           minWidth: { lg: 157, xl: 216 },
           height: { lg: 108, xl: 120 },
           mb: 2,
-          backgroundColor: "lightcoral",
-          cursor: "pointer"
+          cursor: "pointer",
         }}
       >
         {/* TODO: Project image */}
@@ -47,17 +54,16 @@ const ProjectItem = ({ name, image }: Props) => {
         anchorEl={anchorEl}
         anchorOrigin={{
           vertical: "top",
-          horizontal: "left",
+          horizontal: "right",
         }}
         transformOrigin={{
           vertical: "top",
-          horizontal: "left",
+          horizontal: "center",
         }}
         onClose={handlePopoverClose}
         disableRestoreFocus
       >
-        <Typography sx={{ p: 1 }}>{name}</Typography>
-        
+        <Typography sx={{ p: 1 }}>{title}</Typography>
       </Popover>
     </>
   );
