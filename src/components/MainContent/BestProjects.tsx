@@ -18,7 +18,7 @@ const BestProjects = () => {
         "A simple website created using react with vite to show case my favorite projects and apps I have worked on before.",
       image: "",
       techs: ["React", "TypeScript", "Material UI"],
-      srcCode: "https://www.github.com",
+      srcCode: "https://github.com/duniandewon/protofolio",
       live: "https://www.github.com",
     },
     {
