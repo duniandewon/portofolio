@@ -1,4 +1,5 @@
 import Box from "@mui/material/Box";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 import Ornaments from "./Ornaments";
 import RibbonH from "./RibbonH";
@@ -9,6 +10,8 @@ interface Props {
 }
 
 const Wrapper = ({ children }: Props) => {
+  const screenSmallerThan768 = useMediaQuery("(min-width: 768px)");
+
   return (
     <Box
       sx={{
@@ -19,9 +22,13 @@ const Wrapper = ({ children }: Props) => {
       }}
     >
       {children}
-      <RibbonV />
-      <RibbonH />
-      <Ornaments/>
+      {screenSmallerThan768 && (
+        <>
+          <RibbonV />
+          <RibbonH />
+        </>
+      )}
+      <Ornaments />
     </Box>
   );
 };
