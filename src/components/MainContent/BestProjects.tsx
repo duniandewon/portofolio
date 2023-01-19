@@ -19,7 +19,7 @@ const BestProjects = () => {
       image: "",
       techs: ["React", "TypeScript", "Material UI"],
       srcCode: "https://github.com/duniandewon/protofolio",
-      live: "https://www.github.com",
+      live: "https://venerable-gumption-415796.netlify.app/",
     },
     {
       id: "jex",
