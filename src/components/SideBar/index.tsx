@@ -30,7 +30,7 @@ const SideBar = () => {
         display: "flex",
         justifyContent: screenBiggerThan1020 ? "center" : "space-between",
         gap: screenBiggerThan1400 ? 10 : screenBiggerThan1020 ? 20 : 0,
-        position: screenBiggerThan1020 ? "absolute" : "initial",
+        position: screenBiggerThan1020 ? "fixed" : "initial",
         top: screenBiggerThan1400 ? 480 : screenBiggerThan1020 ? 460 : 0,
         left: screenBiggerThan1400 ? -330 : screenBiggerThan1020 ? -290 : 0,
         transform: screenBiggerThan1020

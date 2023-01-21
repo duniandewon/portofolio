@@ -6,6 +6,8 @@ import Typography from "@mui/material/Typography";
 import CodeIcon from "@mui/icons-material/Code";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 import { IProject } from "./ProjectItem";
 
 interface Props {
@@ -14,6 +16,8 @@ interface Props {
   project: IProject | null;
 }
 const ProjectModal = ({ open, onClose, project }: Props) => {
+  const screenBiggerThan1020 = useMediaQuery("(min-width: 1020px)");
+
   return (
     <Modal
       open={open}
@@ -23,25 +27,35 @@ const ProjectModal = ({ open, onClose, project }: Props) => {
     >
       <Box
         sx={{
-          position: "absolute" as "absolute",
+          position: "absolute",
           top: "50%",
           left: "50%",
-          width: "80%",
-          height: "80%",
+          width: screenBiggerThan1020 ? "80%" : "90%",
+          height: screenBiggerThan1020 ? "80%" : "90%",
           transform: "translate(-50%, -50%)",
           bgcolor: "background.paper",
           boxShadow: 24,
         }}
       >
-        <Box sx={{ display: "flex", height: "100%" }}>
-          <Box sx={{ width: "50%", height: "100%" }}>
+        <Box
+          sx={{
+            display: screenBiggerThan1020 ? "flex" : "block",
+            height: "100%",
+          }}
+        >
+          <Box
+            sx={{
+              width: screenBiggerThan1020 ? "50%" : "100%",
+              height: screenBiggerThan1020 ? "100%" : "35%",
+            }}
+          >
             {/* TODO: Project Image */}
           </Box>
           <Box
             sx={{
               p: 2,
-              width: "50%",
-              height: "100%",
+              width: screenBiggerThan1020 ? "50%" : "100%",
+              height: screenBiggerThan1020 ? "100%" : "65%",
               display: "flex",
               flexDirection: "column",
             }}
@@ -88,7 +102,11 @@ const ProjectModal = ({ open, onClose, project }: Props) => {
                 </Button>
               )}
               {project?.live && (
-                <Button variant="contained" startIcon={<PlayArrowIcon />} onClick={() => window.open(project.live, "_blank")}>
+                <Button
+                  variant="contained"
+                  startIcon={<PlayArrowIcon />}
+                  onClick={() => window.open(project.live, "_blank")}
+                >
                   Live
                 </Button>
               )}

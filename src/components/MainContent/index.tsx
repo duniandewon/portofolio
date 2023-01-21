@@ -13,7 +13,7 @@ const MainContent = () => {
       component="main"
       sx={{
         ml: "auto",
-        pt: screenBiggerThan1400 ? 6.2 : screenBiggerThan1020 ? 32 : 10,
+        pt: screenBiggerThan1400 ? 6.2 : screenBiggerThan1020 ? 6 : 3,
         width: screenBiggerThan1020 ? "50%" : "100%",
         display: "flex",
         flexDirection: "column",
