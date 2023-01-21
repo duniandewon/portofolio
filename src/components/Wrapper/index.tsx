@@ -10,7 +10,7 @@ interface Props {
 }
 
 const Wrapper = ({ children }: Props) => {
-  const screenBiggerThan768 = useMediaQuery("(min-width: 768px)");
+  const screenBiggerThan1020 = useMediaQuery("(min-width: 1020px)");
 
   return (
     <Box
@@ -22,7 +22,7 @@ const Wrapper = ({ children }: Props) => {
       }}
     >
       {children}
-      {screenBiggerThan768 && (
+      {screenBiggerThan1020 && (
         <>
           <RibbonV />
           <RibbonH />
