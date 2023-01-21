@@ -68,16 +68,16 @@ const BestProjects = () => {
         project={selectedProject}
       />
       <Box>
-        <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
-          <Typography variant="body1" fontWeight={900}>
-            My favorite projects
-          </Typography>
-        </Box>
+        <Typography variant="h5" component="p" fontWeight={900}>
+          My favorite projects
+        </Typography>
         <Box
           sx={{
             display: "flex",
             gap: 2,
             overflowX: "auto",
+            py: 2,
+            px: 0.5,
           }}
         >
           {projectList.map((project) => (

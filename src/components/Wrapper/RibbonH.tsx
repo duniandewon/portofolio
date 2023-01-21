@@ -1,6 +1,9 @@
+import { useMediaQuery } from "@mui/material";
 import Box from "@mui/material/Box";
 
 const RibbonH = () => {
+  const screenBiggerThan1020 = useMediaQuery("(min-width: 1020px)");
+
   return (
     <Box
       sx={{
@@ -8,7 +11,7 @@ const RibbonH = () => {
         height: 76,
         position: "absolute",
         left: 0,
-        top: "40%",
+        top: screenBiggerThan1020 ? 350 : 211,
         zIndex: -1,
         backgroundColor: "#FFF500",
       }}

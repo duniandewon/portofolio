@@ -16,8 +16,8 @@ function App() {
   return (
     <Wrapper>
       <CssBaseline />
-      <Navbar />
       <SideBar />
+      <Navbar />
       <MainContent />
     </Wrapper>
   );

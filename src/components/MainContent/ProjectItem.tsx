@@ -1,8 +1,10 @@
-import { MouseEvent, useState } from "react";
+import { Fragment, MouseEvent, useState } from "react";
 
 import Paper from "@mui/material/Paper";
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
+
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export interface IProject {
   id: string;
@@ -19,6 +21,8 @@ interface Props {
 }
 
 const ProjectItem = ({ project: { title, image } }: Props) => {
+  const screenBiggerThan1024 = useMediaQuery("(min-width: 1024px)");
+
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const handlePopoverOpen = (event: MouseEvent<HTMLElement>) =>
@@ -29,7 +33,7 @@ const ProjectItem = ({ project: { title, image } }: Props) => {
   const open = Boolean(anchorEl);
 
   return (
-    <>
+    <Fragment>
       <Paper
         elevation={8}
         aria-owns={open ? "mouse-over-popover" : undefined}
@@ -37,8 +41,9 @@ const ProjectItem = ({ project: { title, image } }: Props) => {
         onMouseEnter={handlePopoverOpen}
         onMouseLeave={handlePopoverClose}
         sx={{
-          minWidth: { lg: 157, xl: 216 },
-          height: { lg: 108, xl: 120 },
+          minWidth: screenBiggerThan1024 ? 157 : 225,
+          height: screenBiggerThan1024 ? 108 : 250,
+          borderRadius: 3,
           mb: 2,
           cursor: "pointer",
         }}
@@ -65,7 +70,7 @@ const ProjectItem = ({ project: { title, image } }: Props) => {
       >
         <Typography sx={{ p: 1 }}>{title}</Typography>
       </Popover>
-    </>
+    </Fragment>
   );
 };
 
