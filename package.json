@@ -32,12 +32,14 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",
+    "react-textarea-autosize": "^8.4.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-pretty-code": "^0.9.6",
     "rehype-slug": "^5.1.0",
     "remark-gfm": "^3.0.1",
     "styled-components": "^6.0.0-rc.1",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "concurrently": "^8.0.1",
