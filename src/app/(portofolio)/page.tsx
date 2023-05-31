@@ -1,7 +1,5 @@
 import { Project } from "@prisma/client";
 
-import Navbar from "@/components/Navbar";
-
 import { prisma } from "@/lib/db";
 import ProjectItem from "@/components/ProjectItem";
 
@@ -13,7 +11,6 @@ export default async function Home() {
 
   return (
     <>
-      <Navbar />
       <main
         style={{
           display: "flex",
