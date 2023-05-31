@@ -11,7 +11,7 @@ const PostItem = ({ post }: Props) => {
   return (
     <Container>
       <Post>
-        <PostTitle href="#">{post.title}</PostTitle>
+        <PostTitle href={`/editor/${post.id}`}>{post.title}</PostTitle>
         <PostDate>{post.createdAt.toString()}</PostDate>
       </Post>
     </Container>
