@@ -1,28 +1,22 @@
-import styled from "styled-components";
+import { styled } from "styled-components";
 
 export const Container = styled.div`
-  align-content: center;
-  font-size: 0.688rem;
   display: flex;
+  font-size: 0.688rem;
   align-items: center;
   gap: 0.5rem;
-`;
 
-export const Avatar = styled.div`
-  position: relative;
-  background-color: lightcoral;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  grid-row: span 2;
+  @media (min-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+    font-size: 1.2em;
+  }
 `;
 
 export const Info = styled.div``;
 
-export const Name = styled.p`
-  font-weight: 600;
-  font-size: 1.4em;
-  padding: 0;
-`;
+export const Name = styled.h3``;
 
-export const Role = styled.p``;
+export const Role = styled.p`
+  color: var(--clr-200);
+`;

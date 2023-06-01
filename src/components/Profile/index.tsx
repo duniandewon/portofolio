@@ -1,12 +1,13 @@
 "use client";
 
-import React from "react";
-import { Avatar, Container, Info, Name, Role } from "./styled";
+import { Avatar } from "../UI";
+
+import { Container, Info, Name, Role } from "./styled";
 
 const Profile = () => {
   return (
     <Container>
-      <Avatar />
+      <Avatar src="/images/pp.jpg" alt="profile picture" />
       <Info>
         <Name>Mohammad Baragbah</Name>
         <Role>Frontend Developer</Role>

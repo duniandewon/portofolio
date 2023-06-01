@@ -4,6 +4,24 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle<{ $whiteColor?: boolean }>`
 /*
+  0. Set up custom properties.
+*/
+:root {
+  --clr-900: #000;
+  --clr-700: #333;
+  --clr-300: #888;
+  --clr-200: #eaeaea;
+  --clr-100: #fff;
+
+  --br-900: 50%;
+  --br-400: 10px;
+  --br-200: 5px;
+
+  --fw-reqular: 400;
+  --fw-bold: 500;
+  --fw-xbold: 900;
+}
+/*
   1. Use a more-intuitive box-sizing model.
 */
 *, *::before, *::after {
@@ -48,6 +66,16 @@ input, button, textarea, select {
 */
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
+}
+
+/*
+  9. Custom styles
+*/
+body {
+  position: relative;
+  background-color: var(--clr-900);
+  color: var(--clr-100);
+  font-size: 0.875rem;
 }
 `;
 

@@ -13,10 +13,13 @@ export default async function Home() {
     <>
       <main
         style={{
+          width: "100%",
+          overflowY: "auto",
+          height: "100%",
           display: "flex",
           flexWrap: "wrap",
-          gap: "1rem",
-          padding: "2rem 1.5rem",
+          gap: "1.2rem",
+          padding: "1rem 2rem 0",
         }}
       >
         {renderProjects()}
