@@ -42,7 +42,6 @@ const Editor = ({ post }: Props) => {
     const Header = (await import("@editorjs/header")).default;
     const Embed = (await import("@editorjs/embed")).default;
     const List = (await import("@editorjs/list")).default;
-    const Image = (await import("@editorjs/image")).default;
     const Code = (await import("@editorjs/code")).default;
     const LinkTool = (await import("@editorjs/link")).default;
     const InlineCode = (await import("@editorjs/inline-code")).default;
@@ -50,26 +49,23 @@ const Editor = ({ post }: Props) => {
     const body = postPatchSchema.parse(post);
 
     if (!ref.current) {
-      if (!ref.current) {
-        const editor = new EditorJS({
-          holder: "editor",
-          onReady() {
-            ref.current = editor;
-          },
-          placeholder: "Type here to write your post...",
-          inlineToolbar: true,
-          data: body.content,
-          tools: {
-            header: Header,
-            linkTool: LinkTool,
-            list: List,
-            code: Code,
-            inlineCode: InlineCode,
-            embed: Embed,
-            image: Image,
-          },
-        });
-      }
+      const editor = new EditorJS({
+        holder: "editor",
+        onReady() {
+          ref.current = editor;
+        },
+        placeholder: "Type here to write your post...",
+        inlineToolbar: true,
+        data: body.content,
+        tools: {
+          header: Header,
+          linkTool: LinkTool,
+          list: List,
+          code: Code,
+          inlineCode: InlineCode,
+          embed: Embed,
+        },
+      });
     }
   }, [post]);
 
@@ -78,7 +74,7 @@ const Editor = ({ post }: Props) => {
   const handlePublishPost = async (data: FormData) => {
     setIsSaving(true);
 
-    const blocks = ref.current?.save();
+    const blocks = await ref.current?.save();
 
     const res = await fetch(`/api/posts/${post.id}`, {
       method: "PATCH",
@@ -96,8 +92,6 @@ const Editor = ({ post }: Props) => {
     if (!res?.ok) {
       return console.log("something went wrong!");
     }
-
-    router.refresh();
 
     router.push("/bait");
   };
@@ -126,7 +120,7 @@ const Editor = ({ post }: Props) => {
           <Button type="button" onClick={handleGoBack}>
             Back
           </Button>
-          <Button variant="contained" type="button">
+          <Button variant="contained" type="submit">
             publish
           </Button>
         </Header>
