@@ -18,7 +18,7 @@ export const Header = styled.header`
 
 export const Main = styled.main`
   margin-inline: auto;
-  max-width: 800px;
+  max-width: 41.875rem;
 `;
 
 export const Textarea = styled(TextareaAutosize)`
