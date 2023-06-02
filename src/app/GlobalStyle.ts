@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle<{ $whiteColor?: boolean }>`
 
   --fw-reqular: 400;
   --fw-bold: 500;
-  --fw-xbold: 900;
+  --fw-xbold: 700;
 }
 /*
   1. Use a more-intuitive box-sizing model.

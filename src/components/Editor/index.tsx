@@ -1,19 +1,38 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import EditorJS from "@editorjs/editorjs";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
 import { Project } from "@prisma/client";
+
 import { postPatchSchema } from "@/lib/validation/post";
+
+import { Button } from "../UI";
+
 import { Container, Header, Main, Textarea } from "./styled";
+
+import "@/styles/editor.css";
 
 interface Props {
   post: Pick<Project, "id" | "title" | "content" | "published">;
 }
 
+type FormData = z.infer<typeof postPatchSchema>;
+
 const Editor = ({ post }: Props) => {
   const ref = useRef<EditorJS>();
+
+  const router = useRouter();
+
+  const { register, handleSubmit } = useForm<FormData>({
+    resolver: zodResolver(postPatchSchema),
+  });
 
   const [isMounted, setIsMounted] = useState<boolean>(false);
   const [isSaving, setIsSaving] = useState<boolean>(false);
@@ -54,6 +73,35 @@ const Editor = ({ post }: Props) => {
     }
   }, [post]);
 
+  const handleGoBack = () => router.push("/bait");
+
+  const handlePublishPost = async (data: FormData) => {
+    setIsSaving(true);
+
+    const blocks = ref.current?.save();
+
+    const res = await fetch(`/api/posts/${post.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: data.title,
+        content: blocks,
+      }),
+    });
+
+    setIsSaving(false);
+
+    if (!res?.ok) {
+      return console.log("something went wrong!");
+    }
+
+    router.refresh();
+
+    router.push("/bait");
+  };
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       setIsMounted(true);
@@ -73,20 +121,26 @@ const Editor = ({ post }: Props) => {
 
   return (
     <Container>
-      <Header>
-        <button type="button">Back</button>
-        <button type="button">save</button>
-      </Header>
-      <Main>
-        <Textarea
-          autoFocus
-          id="title"
-          defaultValue={post.title}
-          placeholder="Post title"
-          // {...register("title")}
-        />
-        <div id="editor" className="min-h-[500px]" />
-      </Main>
+      <form onSubmit={handleSubmit(handlePublishPost)}>
+        <Header>
+          <Button type="button" onClick={handleGoBack}>
+            Back
+          </Button>
+          <Button variant="contained" type="button">
+            publish
+          </Button>
+        </Header>
+        <Main>
+          <Textarea
+            autoFocus
+            id="title"
+            defaultValue={post.title}
+            placeholder="Post title"
+            {...register("title")}
+          />
+          <div id="editor" className="min-h-[500px]" />
+        </Main>
+      </form>
     </Container>
   );
 };

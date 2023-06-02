@@ -1,13 +1,14 @@
 import Link from "next/link";
-import{ styled }from "styled-components";
+
+import { styled } from "styled-components";
 
 export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid var(--clr-700);
+  border-radius: var(--br-200);
 
   & + & {
     margin-top: 1.2rem;

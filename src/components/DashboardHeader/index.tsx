@@ -15,7 +15,7 @@ const DashboardHeader = ({ heading, text, children }: Props) => {
     <Container>
       <div>
         <Heading>{heading}</Heading>
-        {text ?? <Text>{text}</Text>}
+        {text && <Text>{text}</Text>}
       </div>
       {children}
     </Container>

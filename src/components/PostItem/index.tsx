@@ -1,6 +1,7 @@
 "use client";
 
 import { Project } from "@prisma/client";
+
 import { Container, Post, PostDate, PostTitle } from "./styled";
 
 interface Props {
