@@ -1,5 +1,7 @@
 "use client";
 
+import Moment from "react-moment";
+
 import { Project } from "@prisma/client";
 
 import { Container, Post, PostDate, PostTitle } from "./styled";
@@ -13,7 +15,9 @@ const PostItem = ({ post }: Props) => {
     <Container>
       <Post>
         <PostTitle href={`/editor/${post.id}`}>{post.title}</PostTitle>
-        <PostDate>{post.createdAt.toString()}</PostDate>
+        <PostDate>
+          <Moment format="DD/MM/YYYY">{post.createdAt}</Moment>
+        </PostDate>
       </Post>
     </Container>
   );

@@ -93,6 +93,8 @@ const Editor = ({ post }: Props) => {
       return console.log("something went wrong!");
     }
 
+    router.refresh();
+
     router.push("/bait");
   };
 

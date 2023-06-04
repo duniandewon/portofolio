@@ -8,7 +8,7 @@ export const Container = styled.div`
   justify-content: space-between;
   padding: 1.2rem 1.5rem;
   border: 1px solid var(--clr-700);
-  border-radius: var(--br-200);
+  border-radius: var(--br-400);
 
   & + & {
     margin-top: 1.2rem;
@@ -17,6 +17,17 @@ export const Container = styled.div`
 
 export const Post = styled.div``;
 
-export const PostTitle = styled(Link)``;
+export const PostTitle = styled(Link)`
+  color: var(--clr-100);
+  text-decoration: none;
+  font-weight: var(--fw-bold);
+  font-size: 1.2rem;
 
-export const PostDate = styled.p``;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export const PostDate = styled.p`
+color: var(--clr-300)
+`;
