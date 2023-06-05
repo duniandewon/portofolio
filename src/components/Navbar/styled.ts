@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 export const Container = styled.nav`
   background-color: var(--clr-900);
   display: flex;
-  gap:1rem;
+  gap: 1rem;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1.2rem;
@@ -13,7 +13,7 @@ export const Container = styled.nav`
     flex-direction: column;
     justify-content: flex-start;
     height: 100%;
-    width: 20rem;
+    width: 25rem;
     border-right: 1px solid var(--clr-700);
     box-shadow: none;
   }

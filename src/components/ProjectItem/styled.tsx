@@ -1,10 +1,28 @@
-import{ styled }from "styled-components";
+import { styled } from "styled-components";
+
+import Moment from "react-moment";
 
 export const Container = styled.div`
-  width: max(25rem, 20%);
+  /* width: min(25rem, 100%); */
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: var(--clr-700);
+
+  h2 {
+    margin-block-start: 1.2em;
+  }
+
+  p {
+    margin-block-start: 0.3em;
+  }
+`;
+
+export const Body = styled.div`
+  padding: 1.2rem 2rem;
+`;
+
+export const Date = styled(Moment)`
+  color: var(--clr-300);
 `;
 
 export const Title = styled.h2`

@@ -1,16 +1,40 @@
 "use client";
 
+import { createElement } from "react";
+
 import { Project } from "@prisma/client";
 
-import { Container, Thumbnail, Title } from "./styled";
-import Image from "next/image";
+import { IPostBlock } from "@/types";
 
-const ProjectItem = ({ title, image }: Project) => {
+import { Container, Date, Body, Thumbnail, Title } from "./styled";
+
+const ProjectItem = (project: Project) => {
+  console.log(project);
+
+  const renderContent = () => {
+    return project.content?.blocks.map(({ type, data }: IPostBlock) => {
+      switch (type) {
+        case "header":
+          return createElement(`h${data.level}`, null, data.text);
+
+        case "list":
+          const items = data.items.map((item) => (
+            <li key={item} dangerouslySetInnerHTML={{ __html: item }} />
+          ));
+          return data.style === "ordered" ? <ol>{items}</ol> : <ul>{items}</ul>;
+        default:
+          return <p dangerouslySetInnerHTML={{ __html: data.text }} />;
+      }
+    });
+  };
+
   return (
     <Container>
-      <Thumbnail>
-        <Image src={image!} alt={title} fill style={{objectFit: "cover"}} />
-      </Thumbnail>
+      <Body>
+        <Date format="DD/MM/YYYY">{project.createdAt}</Date>
+        <Title>{project.title}</Title>
+        {renderContent()}
+      </Body>
     </Container>
   );
 };

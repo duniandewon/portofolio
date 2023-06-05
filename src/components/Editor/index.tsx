@@ -116,8 +116,8 @@ const Editor = ({ post }: Props) => {
   }, [isMounted, initEditor]);
 
   return (
-    <Container>
-      <form onSubmit={handleSubmit(handlePublishPost)}>
+    <form onSubmit={handleSubmit(handlePublishPost)}>
+      <Container>
         <Header>
           <Button type="button" onClick={handleGoBack}>
             Back
@@ -136,8 +136,8 @@ const Editor = ({ post }: Props) => {
           />
           <div id="editor" className="min-h-[500px]" />
         </Main>
-      </form>
-    </Container>
+      </Container>
+    </form>
   );
 };
 
