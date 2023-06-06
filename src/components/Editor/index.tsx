@@ -13,9 +13,17 @@ import { Project } from "@prisma/client";
 
 import { postPatchSchema } from "@/lib/validation/post";
 
-import { Button } from "../UI";
+import { Button, Sidebar } from "../UI";
 
-import { Container, Header, Main, Textarea } from "./styled";
+import {
+  Aside,
+  Container,
+  EditorButtons,
+  EditorWrapper,
+  Header,
+  Main,
+  Textarea,
+} from "./styled";
 
 import "@/styles/editor.css";
 
@@ -116,17 +124,22 @@ const Editor = ({ post }: Props) => {
   }, [isMounted, initEditor]);
 
   return (
-    <form onSubmit={handleSubmit(handlePublishPost)}>
-      <Container>
-        <Header>
-          <Button type="button" onClick={handleGoBack}>
+    <Container>
+      <Header>
+        <EditorButtons>
+          <Button
+            type="button"
+            onClick={handleGoBack}
+            style={{ marginInlineEnd: "auto" }}
+          >
             Back
           </Button>
-          <Button variant="contained" type="submit">
-            publish
-          </Button>
-        </Header>
-        <Main>
+          <Button variant="contained">Save Draft</Button>
+          <Button variant="contained">publish</Button>
+        </EditorButtons>
+      </Header>
+      <Main>
+        <EditorWrapper>
           <Textarea
             autoFocus
             id="title"
@@ -135,9 +148,17 @@ const Editor = ({ post }: Props) => {
             {...register("title")}
           />
           <div id="editor" className="min-h-[500px]" />
-        </Main>
-      </Container>
-    </form>
+        </EditorWrapper>
+      </Main>
+      <Aside>
+        <Sidebar.Sidebar>
+          <Sidebar.Item>
+            <Sidebar.Title>Featured Image</Sidebar.Title>
+            <Sidebar.Content>upload image here</Sidebar.Content>
+          </Sidebar.Item>
+        </Sidebar.Sidebar>
+      </Aside>
+    </Container>
   );
 };
 

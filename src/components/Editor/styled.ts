@@ -3,22 +3,44 @@ import { styled } from "styled-components";
 import TextareaAutosize from "react-textarea-autosize";
 
 export const Container = styled.div`
-  padding: 0 2rem;
+  height: 100%;
   display: grid;
-  gap: 2rem;
-  max-width: 1400px;
-  margin-inline: auto;
+  grid-template-columns: 1fr 20rem;
+  grid-template-rows: 4.5rem;
 `;
 
 export const Header = styled.header`
+  grid-column: 1 / -1;
+  padding-inline: 2rem;
   display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--clr-700);
+`;
+
+export const EditorButtons = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
   justify-content: space-between;
-  padding-block: 2rem;
+`;
+
+export const Aside = styled.aside`
+  border-left: 1px solid var(--clr-700);
+  padding-block: 1.2rem;
 `;
 
 export const Main = styled.main`
-  margin-inline: auto;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 2rem;
+`;
+
+export const EditorWrapper = styled.div`
   max-width: 41.875rem;
+  margin-inline: auto;
+  height: 100%;
 `;
 
 export const Textarea = styled(TextareaAutosize)`
