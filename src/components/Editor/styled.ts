@@ -5,7 +5,7 @@ import TextareaAutosize from "react-textarea-autosize";
 export const Container = styled.div`
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 20rem;
+  grid-template-columns: 1fr 20%;
   grid-template-rows: 4.5rem;
 `;
 

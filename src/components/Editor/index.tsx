@@ -15,6 +15,8 @@ import { postPatchSchema } from "@/lib/validation/post";
 
 import { Button, Sidebar } from "../UI";
 
+import FileUploder from "../FileUploader";
+
 import {
   Aside,
   Container,
@@ -154,7 +156,9 @@ const Editor = ({ post }: Props) => {
         <Sidebar.Sidebar>
           <Sidebar.Item>
             <Sidebar.Title>Featured Image</Sidebar.Title>
-            <Sidebar.Content>upload image here</Sidebar.Content>
+            <Sidebar.Content>
+              <FileUploder />
+            </Sidebar.Content>
           </Sidebar.Item>
         </Sidebar.Sidebar>
       </Aside>

@@ -11,6 +11,7 @@ const Item = styled.li`
 
 const Title = styled.h3`
   color: var(--clr-200);
+  margin-bottom: 1em;
 `;
 
 const Content = styled.div``;
