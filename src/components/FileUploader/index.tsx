@@ -20,6 +20,10 @@ function FileUploder() {
       setIsDragging(true);
 
       if (isDragging) e.dataTransfer.dropEffect = "copy";
+
+      if (isDragging && e.dataTransfer.files.length !== 1)
+        e.dataTransfer.dropEffect = "none";
+
     },
     [isDragging]
   );
@@ -37,6 +41,8 @@ function FileUploder() {
     setIsDragging(false);
 
     const { files } = e.dataTransfer;
+
+    if (files.length !== 1) return;
 
     const image = files[0];
 
