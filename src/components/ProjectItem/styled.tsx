@@ -3,10 +3,12 @@ import { styled } from "styled-components";
 import Moment from "react-moment";
 
 export const Container = styled.div`
-  /* width: min(25rem, 100%); */
+  width: 100%;
   border-radius: 10px;
   overflow: hidden;
   background-color: var(--clr-700);
+  break-inside: avoid;
+  margin-block-end: 1rem;
 
   h2 {
     margin-block-start: 1.2em;

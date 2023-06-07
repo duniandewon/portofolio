@@ -13,7 +13,6 @@ export const Container = styled.nav`
     flex-direction: column;
     justify-content: flex-start;
     height: 100%;
-    width: 25rem;
     border-right: 1px solid var(--clr-700);
     box-shadow: none;
   }
