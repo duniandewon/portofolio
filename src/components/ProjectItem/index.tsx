@@ -2,15 +2,11 @@
 
 import { createElement } from "react";
 
-import { Project } from "@prisma/client";
-
-import { IPostBlock } from "@/types";
+import { IPostBlock, IProject } from "@/types";
 
 import { Container, Date, Body, Thumbnail, Title } from "./styled";
 
-const ProjectItem = (project: Project) => {
-  console.log(project);
-
+const ProjectItem = (project: IProject) => {
   const renderContent = () => {
     return project.content?.blocks.map(({ type, data }: IPostBlock) => {
       switch (type) {
