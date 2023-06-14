@@ -30,10 +30,13 @@ import {
 import "@/styles/editor.css";
 
 interface Props {
-  post: Pick<Project, "id" | "title" | "content" | "published">;
+  // post: Pick<Project, "id" | "title" | "content" | "image" | "published">;
+  post: Project;
 }
 
 type FormData = z.infer<typeof postPatchSchema>;
+
+const cloudName = "ndewon";
 
 const Editor = ({ post }: Props) => {
   const ref = useRef<EditorJS>();
@@ -46,6 +49,7 @@ const Editor = ({ post }: Props) => {
 
   const [isMounted, setIsMounted] = useState<boolean>(false);
   const [isSaving, setIsSaving] = useState<boolean>(false);
+  const [featuredImage, setFeaturedImage] = useState(post.image);
 
   const initEditor = useCallback(async () => {
     const EditorJS = (await import("@editorjs/editorjs")).default;
@@ -81,7 +85,7 @@ const Editor = ({ post }: Props) => {
 
   const handleGoBack = () => router.push("/bait");
 
-  const handlePublishPost = async (data: FormData) => {
+  const handleUpdatehPost = async (data: FormData) => {
     setIsSaving(true);
 
     const blocks = await ref.current?.save();
@@ -93,6 +97,7 @@ const Editor = ({ post }: Props) => {
       },
       body: JSON.stringify({
         title: data.title,
+        image: featuredImage,
         content: blocks,
       }),
     });
@@ -104,8 +109,51 @@ const Editor = ({ post }: Props) => {
     }
 
     router.refresh();
+  };
 
-    router.push("/bait");
+  const handleUploadImage = async (
+    image: File
+  ): Promise<string | undefined> => {
+    // upload to cloaudinary
+    const formData = new FormData();
+
+    formData.append("file", image);
+    formData.append("upload_preset", "portofolio");
+
+    try {
+      const res = await fetch(
+        `https://api.cloudinary.com/v1_1/${cloudName}/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const data = await res.json();
+
+      if (data.error) {
+        /** @TODO: create an alert */
+        console.log(data.error.message);
+        return;
+      }
+
+      setFeaturedImage(data.secure_url)
+
+      return data.secure_url;
+    } catch (err) {
+      /** @TODO: create an alert */
+      console.log("Something went wrong: ", err);
+      return;
+    }
+
+    // update post with new featured image
+    // const res = await fetch(`/api/posts/${post.id}`, {
+    //   method: "PATCH",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ image: "" }),
+    // });
   };
 
   useEffect(() => {
@@ -126,7 +174,7 @@ const Editor = ({ post }: Props) => {
   }, [isMounted, initEditor]);
 
   return (
-    <Container>
+    <Container onSubmit={handleSubmit(handleUpdatehPost)}>
       <Header>
         <EditorButtons>
           <Button
@@ -157,7 +205,7 @@ const Editor = ({ post }: Props) => {
           <Sidebar.Item>
             <Sidebar.Title>Featured Image</Sidebar.Title>
             <Sidebar.Content>
-              <FileUploder />
+              <FileUploder onUpload={handleUploadImage} featuredImage={featuredImage} />
             </Sidebar.Content>
           </Sidebar.Item>
         </Sidebar.Sidebar>

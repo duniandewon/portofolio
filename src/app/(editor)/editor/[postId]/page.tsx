@@ -18,16 +18,9 @@ export default async function PostEditor({ params }: Props) {
 
   if (!post) notFound();
 
-  const { id, title, content, published } = post;
-
   return (
     <Editor
-      post={{
-        id,
-        title,
-        content,
-        published,
-      }}
+      post={post}
     />
   );
 }

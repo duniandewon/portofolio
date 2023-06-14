@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 
 import TextareaAutosize from "react-textarea-autosize";
 
-export const Container = styled.div`
+export const Container = styled.form`
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 20%;

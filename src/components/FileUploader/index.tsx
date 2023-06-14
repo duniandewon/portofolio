@@ -1,14 +1,14 @@
-"use client";
-
 import { ChangeEvent, DragEvent, useCallback, useRef, useState } from "react";
 import { Container, DropHere, FilePicker, ImagePreview } from "./styled";
 
-function FileUploder() {
+interface Props {
+  onUpload: (image: File) => Promise<string | undefined>;
+  featuredImage?: string
+}
+
+function FileUploder({ onUpload, featuredImage }: Props) {
   const [isDragging, setIsDragging] = useState(false);
-  const [previewImage, setPreviewImage] = useState<{
-    name: string;
-    ulr: string;
-  } | null>(null);
+  const [previewImage, setPreviewImage] = useState(featuredImage);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const dropZoneRef = useRef<HTMLDivElement>(null);
@@ -20,10 +20,6 @@ function FileUploder() {
       setIsDragging(true);
 
       if (isDragging) e.dataTransfer.dropEffect = "copy";
-
-      if (isDragging && e.dataTransfer.files.length !== 1)
-        e.dataTransfer.dropEffect = "none";
-
     },
     [isDragging]
   );
@@ -34,7 +30,7 @@ function FileUploder() {
     setIsDragging(false);
   }, []);
 
-  const handleDrop = (e: DragEvent<HTMLDivElement>) => {
+  const handleDrop = async (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -48,14 +44,16 @@ function FileUploder() {
 
     if (!image.type.includes("image")) return;
 
-    setPreviewImage({ name: image.name, ulr: URL.createObjectURL(image) });
+    const imageUrl = await onUpload(image);
+
+    if (imageUrl) setPreviewImage(imageUrl);
   };
 
   const handleClick = () => {
     inputRef.current?.click();
   };
 
-  const handleFileSelect = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleFileSelect = async (e: ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
 
     if (!files?.length) return;
@@ -64,21 +62,22 @@ function FileUploder() {
 
     if (!image.type.includes("image")) return;
 
-    setPreviewImage({ name: image.name, ulr: URL.createObjectURL(image) });
+    const imageUrl = await onUpload(image);
+
+    if (imageUrl) setPreviewImage(imageUrl);
   };
 
   return (
     <Container
       ref={dropZoneRef}
       onClick={handleClick}
-      // onDragEnter={handleDragEnter}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
     >
       <DropHere isDragging={isDragging}>Drop here to upload</DropHere>
       {previewImage ? (
-        <ImagePreview src={previewImage.ulr} />
+        <ImagePreview src={previewImage} />
       ) : (
         <span>Set Featured Image</span>
       )}
