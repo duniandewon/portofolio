@@ -49,7 +49,7 @@ const Editor = ({ post }: Props) => {
 
   const [isMounted, setIsMounted] = useState<boolean>(false);
   const [isSaving, setIsSaving] = useState<boolean>(false);
-  const [featuredImage, setFeaturedImage] = useState(post.image);
+  const [featuredImage, setFeaturedImage] = useState<string>(post.image || "");
 
   const initEditor = useCallback(async () => {
     const EditorJS = (await import("@editorjs/editorjs")).default;
@@ -145,15 +145,6 @@ const Editor = ({ post }: Props) => {
       console.log("Something went wrong: ", err);
       return;
     }
-
-    // update post with new featured image
-    // const res = await fetch(`/api/posts/${post.id}`, {
-    //   method: "PATCH",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ image: "" }),
-    // });
   };
 
   useEffect(() => {
