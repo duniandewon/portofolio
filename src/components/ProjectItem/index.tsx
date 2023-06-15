@@ -1,12 +1,13 @@
 "use client";
 
 import { createElement } from "react";
+import { Project } from "@prisma/client";
 
-import { IPostBlock, IProject } from "@/types";
+import { IPostBlock } from "@/types";
 
 import { Container, Date, Body, Thumbnail, Title } from "./styled";
 
-const ProjectItem = (project: IProject) => {
+const ProjectItem = (project: Project) => {
   const renderContent = () => {
     return project.content?.blocks.map(({ type, data }: IPostBlock) => {
       switch (type) {

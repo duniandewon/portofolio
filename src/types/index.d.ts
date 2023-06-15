@@ -25,13 +25,3 @@ export type IPostBlock =
       data: IHeader;
     }
   | { type: "list"; id: string; data: IList };
-
-export interface IProject {
-  id: number;
-  title: string;
-  image: string | null;
-  content?: { blocks: IPostBlock[]; time: number; version: string } | null;
-  published: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-}
