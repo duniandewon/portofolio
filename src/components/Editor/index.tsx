@@ -122,6 +122,7 @@ const Editor = ({ post }: Props) => {
   const handleUploadImage = async (
     image: File
   ): Promise<string | undefined> => {
+    setDirty(true);
     const formData = new FormData();
 
     formData.append("file", image);
