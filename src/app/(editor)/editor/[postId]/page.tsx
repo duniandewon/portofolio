@@ -8,19 +8,14 @@ import Editor from "@/components/Editor";
 interface Props {
   params: { postId: string };
 }
-
 async function getPost(id: Project["id"]) {
   return await prisma.project.findFirst({ where: { id } });
 }
 
 export default async function PostEditor({ params }: Props) {
-  const post = await getPost(Number(params.postId));
+  const post = (await getPost(Number(params.postId))) as Project;
 
   if (!post) notFound();
 
-  return (
-    <Editor
-      post={post}
-    />
-  );
+  return <Editor post={post} />;
 }
