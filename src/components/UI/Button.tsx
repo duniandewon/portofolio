@@ -26,7 +26,12 @@ const Button = styled.button<IButtonProps>`
   font-weight: var(--fw-bold);
   letter-spacing: 0.02857em;
 
-  &:hover {
+  &:disabled {
+    background-color: var(--clr-300);
+    border-color: var(--clr-300);
+  }
+
+  &:hover:not(:disabled) {
     color: ${(props) =>
       props.variant === "contained" ? "var(--clr-100)" : "var(--clr-700)"};
 

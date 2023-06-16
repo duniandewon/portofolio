@@ -29,6 +29,7 @@ export async function PATCH(
         title: body.title,
         image: body.image,
         content: body.content,
+        published: body.published
       },
     });
 
