@@ -77,6 +77,14 @@ body {
   color: var(--clr-100);
   font-size: 0.875rem;
 }
+
+a {
+  color: #e5e5e5;
+}
+
+a:visited {
+  color: #afafaf;
+}
 `;
 
 export default GlobalStyle;
