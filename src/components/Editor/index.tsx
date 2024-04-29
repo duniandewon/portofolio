@@ -70,7 +70,10 @@ const Editor = ({ post }: Props) => {
         tools: {
           header: Header,
           linkTool: LinkTool,
-          list: List,
+          list: {
+            class: List,
+            inlineToolbar: true,
+          },
           code: Code,
           inlineCode: InlineCode,
           embed: Embed,
