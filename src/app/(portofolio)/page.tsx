@@ -9,7 +9,10 @@ export default async function Home() {
   const data = (await prisma.project.findMany()) as Project[];
 
   const renderProjects = () =>
-    data.map((project) => <ProjectItem {...project} key={project.id} />);
+    data.map(
+      (project) =>
+        project.published && <ProjectItem {...project} key={project.id} />
+    );
 
   return <ProjectList>{renderProjects()}</ProjectList>;
 }
