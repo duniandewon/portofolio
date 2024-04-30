@@ -10,8 +10,8 @@ export const Container = styled.div`
   break-inside: avoid;
   margin-block-end: 1rem;
 
-  h2 {
-    margin-block-start: 1.2em;
+  * + h2 {
+    margin-block-start: 1em;
   }
 
   p {
