@@ -1,9 +1,12 @@
 import Image from "next/image";
+import prisma from "@/lib/prisma-client";
 
-export default function Home() {
+export default async function Home() {
+    const posts = await prisma.post.findMany()
+
     return (
         <>
-            main content
+            posts count: {posts.length}
         </>
     );
 }
