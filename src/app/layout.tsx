@@ -1,27 +1,35 @@
-import { Inter } from "next/font/google";
+import * as React from "react";
+import type {Metadata} from "next";
+import {Inter} from "next/font/google";
 
-import StyledComponentsRegistry from "@/app/registry";
-import GlobalStyle from "@/app/GlobalStyle";
+import {ThemeProvider} from "@/components/theme-provider";
 
-const inter = Inter({ subsets: ["latin"] });
+import "./globals.css";
 
-export const metadata = {
-  title: "My Portofolio",
+const inter = Inter({subsets: ["latin"]});
+
+export const metadata: Metadata = {
+    title: "ndewon portfolio",
+    description: "A collection of my works",
 };
 
 export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-        <StyledComponentsRegistry>
-          <GlobalStyle />
-          {children}
-        </StyledComponentsRegistry>
-      </body>
-    </html>
-  );
+                                       children,
+                                   }: Readonly<{
+    children: React.ReactNode;
+}>) {
+    return (
+        <html lang="en">
+        <body className={inter.className}>
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+        >
+            {children}
+        </ThemeProvider>
+        </body>
+        </html>
+    );
 }
