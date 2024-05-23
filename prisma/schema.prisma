@@ -18,6 +18,7 @@ model Post {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   published Boolean  @default(false)
+  title     String
   image     String?
   content   Json?
 }
