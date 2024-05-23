@@ -8,7 +8,7 @@ export default function Layout({
                                }: Readonly<{
     children: React.ReactNode;
 }>) {
-    return <div className="w-screen h-screen overflow-hidden lg:grid grid-cols-[auto_1fr]">
+    return <div className="w-screen h-screen overflow-hidden lg:grid grid-cols-[auto_1fr] relative">
         <aside className="max-lg:border-b-2 lg:border-r-2 py-4 px-8">
             <div className="flex items-center justify-between lg:flex-col gap-4">
                 <Profile/>
