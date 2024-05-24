@@ -1,0 +1,30 @@
+.input-container {
+    display: inline-grid;
+    position: relative;
+    align-items: stretch;
+    width: 100%;
+}
+
+.input-container::after,
+.input-container textarea {
+    width: 100%;
+    grid-area: 2 / 1;
+    font: inherit;
+    resize: none;
+    background: none;
+    appearance: none;
+    border: 2px solid transparent;
+    font-size: 2.25rem;
+    font-weight: 800;
+}
+
+.input-container::after {
+    content: attr(data-value) " ";
+    visibility: hidden;
+    white-space: pre-wrap;
+}
+
+.input-container textarea:focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 2px
+}
