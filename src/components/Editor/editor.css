@@ -1,0 +1,72 @@
+.ce-block--selected .ce-block__content {
+    background-color: hsl(var(--background));
+}
+
+.ce-inline-toolbar,
+.codex-editor--narrow .ce-toolbox,
+.ce-conversion-toolbar,
+.ce-settings,
+.ce-settings__button,
+.ce-toolbar__settings-btn,
+.cdx-button,
+.ce-toolbar__plus:hover {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-color: hsl(var(--primary));
+}
+
+.ce-popover {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    border-color: hsl(var(--border));
+}
+
+.ce-popover-item__title {
+    color: hsl(var(--foreground));
+}
+
+.ce-popover-item:hover:not(.ce-popover-item--no-hover),
+.ce-popover__item:hover {
+    background-color: hsl(var(--muted));
+}
+
+.ce-inline-tool,
+.ce-conversion-toolbar__label,
+.ce-toolbox__button,
+.cdx-settings-button,
+.ce-toolbar__plus {
+    color: inherit;
+}
+
+.ce-conversion-tool__icon {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+    box-shadow: none;
+}
+
+.cdx-search-field {
+    border-color: hsl(var(--border));;
+    background-color: transparent;
+}
+
+.cdx-search-field__input {
+    color: hsl(var(--primary));
+}
+
+::selection {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+}
+
+.cdx-settings-button:hover,
+.ce-settings__button:hover,
+.ce-toolbox__button--active,
+.ce-toolbox__button:hover,
+.cdx-button:hover,
+.ce-inline-toolbar__dropdown:hover,
+.ce-inline-tool:hover,
+.ce-conversion-tool:hover,
+.ce-toolbar__settings-btn:hover {
+    background-color: hsl(var(--primary));
+    /* color: var(--clr-100); */
+}
