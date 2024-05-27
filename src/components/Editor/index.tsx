@@ -36,14 +36,16 @@ export default function Editor(props: Props) {
     }
 
     const handleSaveEditor = async () => {
-        const blocks = await ref.current?.save()
+        const content = await ref.current?.save()
 
-        if (blocks) {
-            updatePost(1, {
+        if (content) {
+            updatePost(post.id, {
                 title,
-                content: blocks,
+                content,
                 published: false,
             })
+        } else {
+            console.log("Did not save!")
         }
     }
 
