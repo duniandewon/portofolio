@@ -27,8 +27,14 @@ import {
 
 import "@/styles/editor.css";
 
+import {
+  ProjectUpdate,
+  updatePost,
+} from "@/app/(editor)/editor/[postId]/actions";
+
 interface Props {
   post: Project;
+  updatePost(id: number, data: ProjectUpdate): Promise<void>;
 }
 
 const cloudName = "ndewon";
@@ -85,31 +91,20 @@ const Editor = ({ post }: Props) => {
   const handleGoBack = () => router.push("/bait");
 
   const handleUpdatehPost = useCallback(
-    async (publish = false) => {
-      console.log("published: ", publish);
+    async (published = false) => {
       setIsSaving(true);
 
       const blocks = await ref.current?.save();
 
-      const res = await fetch(`/api/posts/${post.id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: postTitle,
-          image: featuredImage,
-          content: blocks,
-          published: publish,
-        }),
+      await updatePost(post.id, {
+        title: postTitle,
+        image: featuredImage,
+        content: blocks,
+        published,
       });
 
       setIsSaving(false);
       setDirty(false);
-
-      if (!res?.ok) {
-        return console.log("something went wrong!");
-      }
     },
     [post.id, featuredImage, postTitle]
   );

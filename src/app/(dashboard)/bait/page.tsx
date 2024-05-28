@@ -1,21 +1,13 @@
-import { redirect } from "next/navigation";
-
 import DashboardHeader from "@/components/DashboardHeader";
 import PostItem from "@/components/PostItem";
 
 import { Button } from "@/components/UI";
 
-import { prisma } from "@/lib/db";
 import PostsList from "@/components/PostsList";
 
-async function createNewPost() {
-  "use server";
-  const post = await prisma.project.create({
-    data: { title: "Untitled Project" },
-  });
+import { prisma } from "@/lib/db";
 
-  redirect(`/editor/${post.id}`);
-}
+import { createNewPost } from "./actions";
 
 export default async function Dashboard() {
   const posts = await prisma.project.findMany({

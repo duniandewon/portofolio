@@ -4,6 +4,7 @@ import { Project } from "@prisma/client";
 
 import { prisma } from "@/lib/db";
 import Editor from "@/components/Editor";
+import { updatePost } from "./actions";
 
 interface Props {
   params: { postId: string };
@@ -17,5 +18,5 @@ export default async function PostEditor({ params }: Props) {
 
   if (!post) notFound();
 
-  return <Editor post={post} />;
+  return <Editor post={post} updatePost={updatePost} />;
 }
