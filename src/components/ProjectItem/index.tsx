@@ -29,11 +29,11 @@ const ProjectItem = (project: Project) => {
 
   return (
     <Container>
-      {/* {project.image && (
+      {project.image && (
         <Thumbnail>
-          <Image src={project.image} alt={project.title} />
+          <Image src={project.image} alt={project.title} fill />
         </Thumbnail>
-      )} */}
+      )}
       <Body>
         <Title>{project.title}</Title>
         <Date format="DD/MM/YYYY">{project.createdAt}</Date>
